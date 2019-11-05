@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import '../stylesheets/Headquarters.css';
 import { Grid } from 'semantic-ui-react';
-import Details from './Details'
+import Details from './Details';
+import ColdStorage from './ColdStorage';
+import LogPanel from './LogPanel';
 
 
 class Headquarters extends Component {
-  // Remember, there's many ways to do this. This doesn't have to be a class component. It's up to you.
 
   render(){
     return(
       <Grid celled='internally'>
         <Grid.Column width={8}>
 
-        {/* Something goes here.... */}
+          <ColdStorage hosts={this.props.hosts} ifSelected={this.props.ifSelected}/>
 
         </Grid.Column>
         <Grid.Column width={5}>
-          <Details />
+          <Details selected={this.props.selected}   
+                   hosts={this.props.hosts} 
+                   areas={this.props.areas}
+                   changeLand={this.props.changeLand}
+                   changeActive={this.props.changeActive}
+                   />
         </Grid.Column>
         <Grid.Column width={3}>
 
-        {/* and here. Take visual cues from the screenshot/video in the Readme. */}
+        <LogPanel />
 
         </Grid.Column>
       </Grid>

@@ -1,15 +1,18 @@
 import React from 'react';
-import '../stylesheets/Area.css'
+import '../stylesheets/Area.css';
+import Host from './Host';
 
-const Area = () => (
-
-  <div className='area' id={/* Pass in the area name here to make sure this is styled correctly */}>
-    <h3 className='labels'>{/* Don't just pass in the name from the data...clean that thing up */}</h3>
-
-    {/* See Checkpoint 1 item 2 in the Readme for a clue as to what goes here */}
-
+const Area = (props) => (
+  <div className='area' id={props.id}>
+    <h3 className='labels'>{props.name}</h3>
+    { 
+      props.hosts.filter(host=> host.area===props.id).map((host,i)=>{
+        if(host.active === true){
+          return <Host {...host} key={i} ifSelected={props.ifSelected}/>
+        }
+      })
+    }
   </div>
-
 )
 
 Area.propTypes = {
